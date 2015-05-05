@@ -1,0 +1,26 @@
+%h1 Listing dishes
+
+.panel.panel-default
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Dish
+        %th Restaurant
+        %th Name
+        %th
+        %th
+        %th
+
+    %tbody
+      - @dishes.each do |dish|
+        %tr
+          %td= image_tag(dish.dish_images.first.avatar.url, class: "img-responsive img-circle", style:"height:20px;")
+          %td= Restaurant.find(dish.restaurant_id).name
+          %td= dish.name
+          %td= link_to 'Show', dish
+          %td= link_to 'Edit', edit_dish_path(dish)
+          %td= link_to 'Destroy', dish, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Dish', new_dish_path

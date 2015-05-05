@@ -5,9 +5,12 @@ gem 'rails', '4.0.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem "haml-rails", "~> 0.9"
+gem 'devise'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+gem 'bootstrap-sass', '~> 3.3.4'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -58,6 +61,11 @@ group :test do
   gem 'selenium-webdriver'  
   gem 'simplecov', require: false  
 end
+
+
+gem 'geocoder'
+gem "paperclip", "~> 4.2"
+gem "nested_form"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

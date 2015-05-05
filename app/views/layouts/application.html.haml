@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Fewd
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .header
+      = render 'layouts/navigation'
+    #main-container{:class => ("container content" unless @home_page)}
+      .row
+        .col-xs-8
+          =flash_messages
+      .row
+        .col-xs-12
+          = yield
+    #footer
+      =#render "layouts/footer"
+
+
+

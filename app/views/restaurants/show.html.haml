@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @restaurant.name
+%p
+  %b Address:
+  = @restaurant.address
+%p
+  %b City:
+  = @restaurant.city
+%p
+  %b State:
+  = @restaurant.state
+%p
+  %b Country:
+  = @restaurant.country
+%p
+  %b Longitude:
+  = @restaurant.longitude
+%p
+  %b Latitude:
+  = @restaurant.latitude
+
+= link_to 'Edit', edit_restaurant_path(@restaurant)
+\|
+= link_to 'Back', restaurants_path

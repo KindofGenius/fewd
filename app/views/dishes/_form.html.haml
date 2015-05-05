@@ -1,0 +1,23 @@
+= nested_form_for @dish, :html => { :multipart => true, :class => "form-horizontal" } do |f|
+  - if @dish.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@dish.errors.count, "error")} prohibited this dish from being saved:"
+      %ul
+        - @dish.errors.full_messages.each do |msg|
+          %li= msg
+  = f.fields_for :dish_images do |image_form|
+    .form-group
+      = f.label "Add Dish image", class: "col-sm-2 control-label"
+      .col-sm-8= image_form.file_field :avatar, class: "form-control"
+      = image_form.link_to_remove "Remove this image"
+  .form-group
+    %p= f.link_to_add "Add Another Image", :dish_images
+  .form-group
+    = f.label :restaurant_id, class: "col-sm-2 control-label"
+    .col-sm-8=f.select :restaurant_id, Restaurant.all.collect {|x| [x.name, x.id]}, {}, {class: "form-control"}
+    
+  .form-group
+    = f.label :name, class: "col-sm-2 control-label"
+    .col-sm-8= f.text_field :name, class: "form-control"
+  .actions
+    = f.submit 'Save'

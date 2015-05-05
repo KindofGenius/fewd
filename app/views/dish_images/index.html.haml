@@ -1,0 +1,21 @@
+%h1 Listing dish_images
+
+%table
+  %thead
+    %tr
+      %th Dish
+      %th
+      %th
+      %th
+
+  %tbody
+    - @dish_images.each do |dish_image|
+      %tr
+        %td= dish_image.dish_id
+        %td= link_to 'Show', dish_image
+        %td= link_to 'Edit', edit_dish_image_path(dish_image)
+        %td= link_to 'Destroy', dish_image, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Dish image', new_dish_image_path

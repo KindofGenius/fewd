@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Dish:
+  = @dish_image.dish_id
+
+= link_to 'Edit', edit_dish_image_path(@dish_image)
+\|
+= link_to 'Back', dish_images_path
