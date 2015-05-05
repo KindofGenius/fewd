@@ -1,0 +1,27 @@
+= form_for @hood, :html => { :multipart => true, :class => "form-horizontal" } do |f|
+  - if @hood.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@hood.errors.count, "error")} prohibited this hood from being saved:"
+      %ul
+        - @hood.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.label "Add Hood Image", class: "col-sm-2 control-label"
+    .col-sm-8= f.file_field :avatar, class: "form-control"
+  .form-group
+    = f.label :name, class: "col-sm-2 control-label"
+    .col-sm-8= f.text_field :name, class: "form-control"
+  .form-group
+    = f.label :address, class: "col-sm-2 control-label"
+    .col-sm-8= f.text_field :address, class: "form-control"
+  .form-group
+    = f.label :city, class: "col-sm-2 control-label"
+    .col-sm-8= f.text_field :city, class: "form-control"
+  .form-group
+    = f.label :state, class: "col-sm-2 control-label"
+    .col-sm-8= f.text_field :state, class: "form-control"
+  .form-group
+    = f.label :country, class: "col-sm-2 control-label"
+    .col-sm-8= f.text_field :country, class: "form-control"
+  .actions
+    = f.submit 'Save', class: "btn btn-info"

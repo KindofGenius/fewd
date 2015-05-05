@@ -1,2 +1,9 @@
-%h1 Pages#home
-%p Find me in app/views/pages/home.html.haml
+%h1 Find Food by Your Mood
+%h3 Select Your Hood
+.hood-select
+  -Hood.all.each do |hood|
+    .col-sm-6
+      =link_to hood do 
+        .hood-box
+          =image_tag(hood.avatar.url, class: "img-responsive")
+          %h4=hood.name

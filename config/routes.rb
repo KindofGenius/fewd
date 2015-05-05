@@ -1,4 +1,6 @@
 Fewd::Application.routes.draw do
+  resources :hoods
+
   resources :dish_moods
 
   resources :moods
