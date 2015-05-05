@@ -7,7 +7,10 @@
 %p
   %b Name:
   = @dish.name
-
+%p
+  %b Moods:
+  -@dish.moods.each do |m|
+    =m.name
 = link_to 'Edit', edit_dish_path(@dish)
 \|
 = link_to 'Back', dishes_path

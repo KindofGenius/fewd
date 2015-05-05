@@ -1,4 +1,8 @@
 Fewd::Application.routes.draw do
+  resources :dish_moods
+
+  resources :moods
+
   resources :dish_images
 
   resources :dishes

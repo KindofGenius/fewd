@@ -15,9 +15,13 @@
   .form-group
     = f.label :restaurant_id, class: "col-sm-2 control-label"
     .col-sm-8=f.select :restaurant_id, Restaurant.all.collect {|x| [x.name, x.id]}, {}, {class: "form-control"}
-    
+
   .form-group
     = f.label :name, class: "col-sm-2 control-label"
     .col-sm-8= f.text_field :name, class: "form-control"
+
+  .form-group
+    = f.label "Select Moods", class: "col-sm-2 control-label"
+    .col-sm-8=f.select :mood_ids, Mood.all.collect {|x| [x.name, x.id]}, {}, {:multiple => true, class: "form-control"}
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: "btn btn-info"

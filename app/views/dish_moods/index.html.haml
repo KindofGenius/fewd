@@ -1,0 +1,23 @@
+%h1 Listing dish_moods
+
+%table
+  %thead
+    %tr
+      %th Dish
+      %th Mood
+      %th
+      %th
+      %th
+
+  %tbody
+    - @dish_moods.each do |dish_mood|
+      %tr
+        %td= dish_mood.dish_id
+        %td= dish_mood.mood_id
+        %td= link_to 'Show', dish_mood
+        %td= link_to 'Edit', edit_dish_mood_path(dish_mood)
+        %td= link_to 'Destroy', dish_mood, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Dish mood', new_dish_mood_path

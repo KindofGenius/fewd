@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505190919) do
+ActiveRecord::Schema.define(version: 20150505202203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,11 +26,32 @@ ActiveRecord::Schema.define(version: 20150505190919) do
     t.datetime "avatar_updated_at"
   end
 
+  create_table "dish_moods", force: true do |t|
+    t.integer  "dish_id"
+    t.integer  "mood_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "dishes", force: true do |t|
     t.integer  "restaurant_id"
     t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "moods", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
   end
 
   create_table "restaurants", force: true do |t|

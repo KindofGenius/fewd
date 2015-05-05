@@ -20,6 +20,7 @@ class DishesController < ApplicationController
 
   # GET /dishes/1/edit
   def edit
+    @dish.dish_images.build
   end
 
   # POST /dishes
@@ -70,6 +71,6 @@ class DishesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_params
-      params.require(:dish).permit(:restaurant_id, :name, dish_images_attributes: [:id, :dish_id, :avatar, :_destroy])
+      params.require(:dish).permit(:restaurant_id, :name, mood_ids: [], dish_images_attributes: [:id, :dish_id, :avatar, :_destroy])
     end
 end

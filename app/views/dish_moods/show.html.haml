@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Dish:
+  = @dish_mood.dish_id
+%p
+  %b Mood:
+  = @dish_mood.mood_id
+
+= link_to 'Edit', edit_dish_mood_path(@dish_mood)
+\|
+= link_to 'Back', dish_moods_path
