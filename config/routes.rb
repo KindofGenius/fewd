@@ -1,5 +1,9 @@
 Fewd::Application.routes.draw do
-  resources :hoods
+  resources :hoods do
+    member do
+      get :mood
+    end
+  end
 
   resources :dish_moods
 
@@ -15,6 +19,7 @@ Fewd::Application.routes.draw do
   get "pages/about"
   get "pages/contact"
   get "pages/faq"
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

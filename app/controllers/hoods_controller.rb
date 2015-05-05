@@ -1,5 +1,5 @@
 class HoodsController < ApplicationController
-  before_action :set_hood, only: [:show, :edit, :update, :destroy]
+  before_action :set_hood, only: [:show, :edit, :update, :destroy, :mood]
 
   # GET /hoods
   # GET /hoods.json
@@ -10,6 +10,8 @@ class HoodsController < ApplicationController
   # GET /hoods/1
   # GET /hoods/1.json
   def show
+    @restaurants = Restaurant.near([@hood.latitude, @hood.longitude], 2)
+    @moods = Mood.all
   end
 
   # GET /hoods/new
@@ -59,6 +61,12 @@ class HoodsController < ApplicationController
       format.html { redirect_to hoods_url }
       format.json { head :no_content }
     end
+  end
+
+  def mood
+    @mood = Mood.find(params[:mood])
+    dish_moods = DishMood.where("mood_id = ?", params[:mood])
+    @dishes = dish_moods.map{|dm| Dish.find(dm.id)}
   end
 
   private

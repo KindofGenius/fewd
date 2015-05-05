@@ -1,1 +1,8 @@
-
+%h1 How Are You Feeling?
+-@moods.each do |mood|
+  .col-sm-12.col-md-4
+    =link_to mood_hood_path(@hood, mood: mood.id) do
+      .mood-box
+        =image_tag(mood.icon.url)
+        =image_tag(mood.background.url)
+        .text-center=mood.name
