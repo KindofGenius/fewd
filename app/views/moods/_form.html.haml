@@ -10,6 +10,9 @@
     = f.label :name, class: "col-sm-2 control-label"
     .col-sm-8= f.text_field :name, class: "form-control"
   .form-group
+    = f.label :description, class: "col-sm-2 control-label"
+    .col-sm-8= f.text_area :description, class: "form-control"
+  .form-group
     = f.label "Add Icon", class: "col-sm-2 control-label"
     .col-sm-8= f.file_field :icon, class: "form-control"
   .form-group
