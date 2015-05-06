@@ -67,7 +67,7 @@ class HoodsController < ApplicationController
     @full_width = true
     @mood = Mood.find(params[:mood])
     dish_moods = DishMood.where("mood_id = ?", params[:mood])
-    @dishes = dish_moods.map{|dm| Dish.find(dm.id)}
+    @dishes = dish_moods.map{|dm| Dish.find(dm.dish_id)}
   end
 
   private
