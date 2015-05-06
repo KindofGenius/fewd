@@ -1,4 +1,6 @@
-%h1.text-center=@mood.name
+%h1.text-center
+  =image_tag(@mood.icon.url, style:"max-width:20px;")
+  =@mood.name
 %h4.text-center=@mood.description
 -@dishes.each do |dish|
   .col-sm-12.col-md-6

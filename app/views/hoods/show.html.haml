@@ -3,7 +3,7 @@
   .col-xs-12.col-sm-6.col-md-4.margin-top-40
     =link_to mood_hood_path(@hood, mood: mood.id) do
       .mood-box.overlay-wrapper
-        =image_tag(mood.background.url)
+        =image_tag(mood.background.url, class: "bg-mood")
         .dark-overlay
           .text-overlay.text-center
             =image_tag(mood.icon.url)
