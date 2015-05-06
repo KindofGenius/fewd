@@ -6,6 +6,10 @@
   .order-now-box
     .pull-left
       %h3 Order Now:
+    -@services.each do |serv|
+      =link_to serv.restaurant_services.where("restaurant_id = ?", @restaurant.id).first.url, :target => "_blank" do
+        .service-icon.pull-left
+          =image_tag(serv.avatar.url, class: "img-responsive")
 
     .clearfix
 .show-dish{style: "background:url(#{@dish.dish_images.first.avatar.url}) no-repeat center center fixed;height:400px;overflow:hidden;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;"}

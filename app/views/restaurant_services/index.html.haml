@@ -1,0 +1,25 @@
+%h1 Listing restaurant_services
+
+%table
+  %thead
+    %tr
+      %th Restaurant
+      %th Service
+      %th Url
+      %th
+      %th
+      %th
+
+  %tbody
+    - @restaurant_services.each do |restaurant_service|
+      %tr
+        %td= restaurant_service.restaurant_id
+        %td= restaurant_service.service_id
+        %td= restaurant_service.url
+        %td= link_to 'Show', restaurant_service
+        %td= link_to 'Edit', edit_restaurant_service_path(restaurant_service)
+        %td= link_to 'Destroy', restaurant_service, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Restaurant service', new_restaurant_service_path

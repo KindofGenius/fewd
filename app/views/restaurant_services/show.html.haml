@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Restaurant:
+  = @restaurant_service.restaurant_id
+%p
+  %b Service:
+  = @restaurant_service.service_id
+%p
+  %b Url:
+  = @restaurant_service.url
+
+= link_to 'Edit', edit_restaurant_service_path(@restaurant_service)
+\|
+= link_to 'Back', restaurant_services_path

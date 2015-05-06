@@ -12,6 +12,7 @@ class DishesController < ApplicationController
   def show
     @restaurant = Restaurant.find(@dish.restaurant_id)
     @full_width = true
+    @services = @restaurant.services
   end
 
   # GET /dishes/new

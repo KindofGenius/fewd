@@ -1,4 +1,8 @@
 Fewd::Application.routes.draw do
+  resources :restaurant_services
+
+  resources :services
+
   resources :hoods do
     member do
       get :mood
