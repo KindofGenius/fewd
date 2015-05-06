@@ -6,6 +6,8 @@
   -Hood.all.each do |hood|
     .col-sm-6
       =link_to hood do 
-        .hood-box
+        .hood-box.overlay-wrapper
           =image_tag(hood.avatar.url, class: "img-responsive")
-          %h4=hood.name
+          .dark-overlay
+            .text-overlay
+              %h3.text-center=hood.name
