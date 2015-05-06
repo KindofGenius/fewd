@@ -5,16 +5,19 @@
   display: inline-block
   position: relative
   overflow: hidden
+  width: 100%
+  height: 400px
   .dark-overlay
     -webkit-transition: all 0.5s ease
     -moz-transition: all 0.5s ease
     -o-transition: all 0.5s ease
     -ms-transition: all 0.5s ease
     transition: all 0.5s ease
+    height: 400px
     .text-overlay
       position: relative
       top: 50%
-      h3
+      h3, p
         display: none
         -webkit-transition: all 0.5s ease
         -moz-transition: all 0.5s ease
@@ -39,5 +42,14 @@
       overflow: hidden
 
       .text-overlay
-        h3
+        h3, p
           display: block
+.order-now-box
+  background: white
+  width: 30%
+  min-width: 200px
+  margin: 15px auto
+  padding: 5px
+  color: #212121
+  h3
+    margin: 0

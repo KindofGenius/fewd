@@ -1,16 +1,14 @@
-%p
-  =image_tag(@dish.dish_images.first.avatar.url, class: "img-responsive")
+.text-center
+  %h1=@dish.name
+  %h4
+    ="#{@restaurant.name} -"
+    =@restaurant.address
+  .order-now-box
+    .pull-left
+      %h3 Order Now:
 
-%p
-  %b Restaurant:
-  = @dish.restaurant_id
-%p
-  %b Name:
-  = @dish.name
-%p
-  %b Moods:
-  -@dish.moods.each do |m|
-    =m.name
+    .clearfix
+.show-dish{style: "background:url(#{@dish.dish_images.first.avatar.url}) no-repeat center center fixed;height:400px;overflow:hidden;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;"}
 = link_to 'Edit', edit_dish_path(@dish)
 \|
 = link_to 'Back', dishes_path
