@@ -1,6 +1,6 @@
 %h1.text-center How Are You Feeling?
 -@moods.each do |mood|
-  .col-sm-12.col-md-4
+  .col-xs-12.col-sm-6.col-md-4.margin-top-40
     =link_to mood_hood_path(@hood, mood: mood.id) do
       .mood-box.overlay-wrapper
         =image_tag(mood.background.url)
