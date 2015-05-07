@@ -5,8 +5,8 @@
 -@dishes.each do |dish|
   .col-sm-12.col-md-6
     =link_to dish_path(dish) do
-      .dish-box
-        =image_tag(dish.dish_images.first.avatar.url, style: "width:100%;")
+      .dish-box{style: "background:url(#{dish.dish_images.first.avatar.url}) no-repeat center center;xx-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;"}
+        =#image_tag(dish.dish_images.first.avatar.url, style: "width:100%;")
         .dark-overlay
           .text-overlay.text-center
             %h3=dish.name
