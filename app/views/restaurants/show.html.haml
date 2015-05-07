@@ -1,26 +1,33 @@
-%p#notice= notice
+.text-center
+  %h1
+    =@restaurant.name
+  %h3{style:"margin-top:0px;"}
+    = @restaurant.address
+    ="#{@restaurant.city},"
+    =@restaurant.state
+.order-now-box
+  %h3.pull-left Order Now:
+  -@services.each do |serv|
+    =link_to serv.restaurant_services.where("restaurant_id = ?", @restaurant.id).first.url, :target => "_blank" do
+      .service-icon.pull-left
+        =image_tag(serv.avatar.url, class: "img-responsive")
+  .clearfix
+-@dishes.each do |dish|
+  .col-sm-12.col-md-6
+    =link_to dish_path(dish) do
+      .dish-box
+        =image_tag(dish.dish_images.first.avatar.url, style: "width:100%;")
+        .dark-overlay
+          .text-overlay.text-center
+            %h3=dish.name
+            -@restaurant = Restaurant.find(dish.restaurant_id)
+            %p
+              %b{style:"text-transform:uppercase;"}=@restaurant.name
+              %br
+              %i.fa.fa-map-marker
+              =@restaurant.full_street_address
 
-%p
-  %b Name:
-  = @restaurant.name
-%p
-  %b Address:
-  = @restaurant.address
-%p
-  %b City:
-  = @restaurant.city
-%p
-  %b State:
-  = @restaurant.state
-%p
-  %b Country:
-  = @restaurant.country
-%p
-  %b Longitude:
-  = @restaurant.longitude
-%p
-  %b Latitude:
-  = @restaurant.latitude
+.clearfix
 
 = link_to 'Edit', edit_restaurant_path(@restaurant)
 \|

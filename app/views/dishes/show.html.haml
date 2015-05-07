@@ -1,8 +1,9 @@
 .text-center
   %h1=@dish.name
-  %h4
-    ="#{@restaurant.name} -"
-    =@restaurant.address
+  =link_to @restaurant do 
+    %h4
+      ="#{@restaurant.name} -"
+      =@restaurant.address
   .order-now-box
     .pull-left
       %h3 Order Now:

@@ -10,6 +10,9 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @full_width = true
+    @dishes = @restaurant.dishes
+    @services = @restaurant.services
   end
 
   # GET /restaurants/new
