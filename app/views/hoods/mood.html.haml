@@ -12,6 +12,7 @@
             %h3=dish.name
             -@restaurant = Restaurant.find(dish.restaurant_id)
             %p
-              =@restaurant.name
+              %b{style:"text-transform:uppercase;"}=@restaurant.name
               %br
+              %i.fa.fa-map-marker
               =@restaurant.full_street_address
