@@ -65,9 +65,15 @@ class HoodsController < ApplicationController
 
   def mood
     @full_width = true
+    @hood = Hood.find(params[:id])
     @mood = Mood.find(params[:mood])
-    dish_moods = DishMood.where("mood_id = ?", params[:mood])
-    @dishes = dish_moods.map{|dm| Dish.find(dm.dish_id)}
+    dish_moods = DishMood.where("mood_id = ?", @mood).map{|d| d.dish_id}
+    @dishes_no_mood = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 1)
+    @dishes = @dishes_no_mood.select{|dish| dish_moods.include?(dish.id)}
+    #@dishes = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 2)
+    #raise "#{@dishes.count}"
+    #dish_moods = DishMood.where("mood_id = ?", params[:mood])
+    #@dishes = dish_moods.map{|dm| Dish.find(dm.dish_id)}
   end
 
   private
