@@ -1,6 +1,6 @@
 task :import_seamless => :environment do
   require 'csv'
-  csv_path = Rails.root.join("public", "west-village-seamless.csv")
+  csv_path = Rails.root.join("public", "ues-seamless.csv")
   csv_text = File.read(csv_path)
   csv = CSV.parse(csv_text, :headers => true)
   csv.each do |row|
@@ -8,8 +8,10 @@ task :import_seamless => :environment do
       restaurant = Restaurant.where(name: row["name"], address: row["address"]).first_or_create do |f|
         f.name = row["name"] if row["name"] != "NULL"
         f.address = row["address"] if row["address"] != "NULL"
-        f.city = row["city"] if row["city"] != "NULL"
-        f.state = row["state"] if row["state"] != "NULL"
+        #f.city = row["city"] if row["city"] != "NULL"
+        #f.state = row["state"] if row["state"] != "NULL"
+        f.city = "New York"
+        f.state = "New York"
       end
       RestaurantService.where(service_id: 1, restaurant_id: restaurant.id).first_or_create do |f|
         f.service_id = 1
