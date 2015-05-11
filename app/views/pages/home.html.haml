@@ -5,6 +5,17 @@
   %h4 First Select Your Hood (next your mood):
 .hood-select.margin-top-20
   .row.row-centered
+    .col-xs-6.col-centered
+      .form-group.text-center
+        = form_tag(hoods_search_path, :method => "get", class: "", id: "search-form") do
+          .pull-left{style:"width:80%;margin-right:10px;"}= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter Your Delivery Address"
+          .pull-left
+            %button.btn.btn-info{:type => "submit"}
+              %i.icon-search
+              Search
+          .clearfix
+
+  .row.row-centered
     -Hood.all.each do |hood|
       .col-xs-12.col-sm-6.col-centered
         =link_to hood do 

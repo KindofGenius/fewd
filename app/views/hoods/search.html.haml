@@ -1,0 +1,17 @@
+.text-center 
+  %h1
+    We Did Not Find Any Dishes Near Your Location
+  %h3
+    Try One of these Neighborhoods
+
+.row.row-centered
+  -Hood.all.each do |hood|
+    .col-xs-12.col-sm-6.col-centered
+      =link_to hood do 
+        .hood-box.overlay-wrapper
+          =image_tag(hood.avatar.url, class: "img-responsive")
+          .dark-overlay
+            .text-overlay
+              %h3.text-center
+                %i.fa.fa-map-marker
+                =hood.name

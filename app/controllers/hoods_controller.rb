@@ -10,7 +10,7 @@ class HoodsController < ApplicationController
   # GET /hoods/1
   # GET /hoods/1.json
   def show
-    @restaurants = Restaurant.near([@hood.latitude, @hood.longitude], 2)
+    @restaurants = Restaurant.near([@hood.latitude, @hood.longitude], 1)
     @moods = Mood.all
   end
 
@@ -74,6 +74,12 @@ class HoodsController < ApplicationController
     #raise "#{@dishes.count}"
     #dish_moods = DishMood.where("mood_id = ?", params[:mood])
     #@dishes = dish_moods.map{|dm| Dish.find(dm.dish_id)}
+  end
+
+  def search
+    address = Geocoder.coordinates(params[:search])
+    @hood = Hood.near([address.first, address.last], 2)
+    redirect_to @hood.first if @hood.count > 0
   end
 
   private

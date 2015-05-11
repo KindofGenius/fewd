@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507225529) do
+ActiveRecord::Schema.define(version: 20150511172133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,8 +61,6 @@ ActiveRecord::Schema.define(version: 20150507225529) do
     t.text     "city"
     t.text     "state"
     t.text     "country",             default: "US"
-    t.text     "longitude"
-    t.text     "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
@@ -71,6 +69,8 @@ ActiveRecord::Schema.define(version: 20150507225529) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "slug"
+    t.float    "longitude"
+    t.float    "latitude"
   end
 
   add_index "hoods", ["slug"], name: "index_hoods_on_slug", unique: true, using: :btree
