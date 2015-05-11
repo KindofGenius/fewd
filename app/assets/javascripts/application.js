@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery_nested_form
+//= require wice_grid
 //= require_tree .

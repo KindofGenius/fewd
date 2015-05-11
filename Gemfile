@@ -69,6 +69,7 @@ gem "nested_form"
 gem 'aws-sdk'
 gem 'friendly_id', '~> 5.1.0'
 gem "font-awesome-rails"
+gem "wice_grid", '3.4.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

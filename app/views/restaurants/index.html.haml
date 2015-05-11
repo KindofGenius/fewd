@@ -1,34 +1,14 @@
 %h1 Listing restaurants
-
-.panel.panel-default
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Name
-        %th Address
-        %th City
-        %th State
-        %th Country
-        %th Longitude
-        %th Latitude
-        %th
-        %th
-        %th
-
-    %tbody
-      - @restaurants.each do |restaurant|
-        %tr
-          %td= restaurant.name
-          %td= restaurant.address
-          %td= restaurant.city
-          %td= restaurant.state
-          %td= restaurant.country
-          %td= restaurant.longitude
-          %td= restaurant.latitude
-          %td= link_to 'Show', restaurant
-          %td= link_to 'Edit', edit_restaurant_path(restaurant)
-          %td= link_to 'Destroy', restaurant, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
+= grid(@restaurants_grid) do |g|                                     
+  -g.column name: 'ID', attribute: 'id'
+  -g.column name: 'Name', attribute: 'name'
+  -g.column name: 'Address', attribute: 'address'
+  -g.column name: 'City', attribute: 'city'
+  -g.column name: 'Longitude', attribute: 'longitude'
+  -g.column name: 'Latitude', attribute: 'latitude'
+  -g.column name: 'View' do |restaurant|
+    -link_to "View", restaurant
+  -g.column name: 'Delete' do |restaurant|
+    -link_to "Delete", restaurant, method: :delete, data: { confirm: 'Are you sure?' }
 
 = link_to 'New Restaurant', new_restaurant_path
