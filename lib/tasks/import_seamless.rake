@@ -27,7 +27,7 @@ end
 
 task :import_delivery => :environment do
   require 'csv'
-  csv_path = Rails.root.join("public", "delivery-manhattan.csv")
+  csv_path = Rails.root.join("public", "ues-delivery.csv")
   csv_text = File.read(csv_path)
   csv = CSV.parse(csv_text, :headers => true)
   csv.each do |row|
