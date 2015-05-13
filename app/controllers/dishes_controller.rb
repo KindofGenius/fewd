@@ -13,6 +13,7 @@ class DishesController < ApplicationController
     @restaurant = Restaurant.find(@dish.restaurant_id)
     @full_width = true
     @services = @restaurant.services
+    @others = @restaurant.dishes.where.not(id: @dish.id)
   end
 
   # GET /dishes/new

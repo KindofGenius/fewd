@@ -1,18 +1,20 @@
 .text-center
-  %h1 Tired of Ordering the Same Old Food?
-  %h3 Order the perfect meal everytime. Choose your food by your mood.
+  %h1 Hungry, But Don't Know What To Eat?
+  %h1 Find The Perfect Take-Out Meal
+  %h3 Visually Browse Local Delivery Dish by Your Mood
   %br
   %h4 First Select Your Hood (next your mood):
 .hood-select.margin-top-20
   .row.row-centered
-    .col-xs-6.col-centered
+    .col-xs-12.col-sm-10.col-md-8.col-centered
       .form-group.text-center
         = form_tag(hoods_search_path, :method => "get", class: "", id: "search-form") do
-          .pull-left{style:"width:80%;margin-right:10px;"}= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter Your Delivery Address"
-          .pull-left
-            %button.btn.btn-info{:type => "submit"}
-              %i.icon-search
-              Search
+          .col-sm-offset-1.col-xs-8= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter Your Delivery Address"
+          .col-xs-2{style: "padding-left:0px;"}
+            .pull-left
+              %button.btn.btn-info{:type => "submit"}
+                %i.icon-search
+                Find Food in My Area
           .clearfix
 
   .row.row-centered
