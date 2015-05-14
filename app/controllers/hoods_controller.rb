@@ -11,7 +11,13 @@ class HoodsController < ApplicationController
   # GET /hoods/1.json
   def show
     @restaurants = Restaurant.near([@hood.latitude, @hood.longitude], 1)
-    @moods = Mood.all
+    if params[:yum] == "foods"
+      @moods = Food.all
+    elsif params[:yum] == "diets"
+      @moods = Diet.all
+    else
+      @moods = Mood.all
+    end
   end
 
   # GET /hoods/new
