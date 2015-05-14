@@ -13,10 +13,13 @@ class HoodsController < ApplicationController
     @restaurants = Restaurant.near([@hood.latitude, @hood.longitude], 1)
     if params[:yum] == "foods"
       @moods = Food.all
+      @yum = "food".to_sym
     elsif params[:yum] == "diets"
       @moods = Diet.all
+      @yum = "diet".to_sym
     else
       @moods = Mood.all
+      @yum = "mood".to_sym
     end
   end
 
@@ -72,10 +75,22 @@ class HoodsController < ApplicationController
   def mood
     @full_width = true
     @hood = Hood.find(params[:id])
-    @mood = Mood.find(params[:mood])
-    dish_moods = DishMood.where("mood_id = ?", @mood).map{|d| d.dish_id}
-    @dishes_no_mood = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 1)
-    @dishes = @dishes_no_mood.select{|dish| dish_moods.include?(dish.id)}
+    if params[:food]
+      @yum = Food.find(params[:food])
+      dish_foods = DishFood.where("food_id = ?", @yum).map{|d| d.dish_id}
+      dishes_no_food = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 1)
+      @dishes = dishes_no_food.select{|dish| dish_foods.include?(dish.id)}
+    elsif params[:diet]
+      @yum = Mood.find(params[:diet])
+      dish_diets = DishDiet.where("diet_id = ?", @yum).map{|d| d.dish_id}
+      dishes_no_diet = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 1)
+      @dishes = dishes_no_diet.select{|dish| dish_diets.include?(dish.id)}      
+    else
+      @yum = Mood.find(params[:mood])
+      dish_moods = DishMood.where("mood_id = ?", @yum).map{|d| d.dish_id}
+      dishes_no_mood = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 1)
+      @dishes = dishes_no_mood.select{|dish| dish_moods.include?(dish.id)}
+    end
     #@dishes = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 2)
     #raise "#{@dishes.count}"
     #dish_moods = DishMood.where("mood_id = ?", params[:mood])

@@ -1,7 +1,7 @@
 %h1.text-center
-  =image_tag(@mood.icon.url, style:"max-width:20px;")
-  =@mood.name
-%h4.text-center=@mood.description
+  =image_tag(@yum.icon.url, style:"max-width:20px;")
+  =@yum.name
+%h4.text-center=@yum.description
 -@dishes.each do |dish|
   .col-sm-12.col-md-6
     =link_to dish_path(dish) do
