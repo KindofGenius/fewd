@@ -2,29 +2,15 @@
   %h1 Hungry, But Don't Know What To Eat?
   %h1 Find The Perfect Take-Out Meal
   %h3 Visually Browse Local Delivery Dish by Your Mood
-  %br
-  %h4 First Select Your Hood (next your mood):
-.hood-select.margin-top-20
-  .row.row-centered
-    .col-xs-12.col-sm-10.col-md-8.col-centered
-      .form-group.text-center
-        = form_tag(hoods_search_path, :method => "get", class: "", id: "search-form") do
-          .col-sm-offset-1.col-xs-8= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter Your Delivery Address"
-          .col-xs-2{style: "padding-left:0px;"}
-            .pull-left
-              %button.btn.btn-info{:type => "submit"}
-                %i.icon-search
-                Find Food in My Area
-          .clearfix
+.margin-top-20
+  -@moods.each do |mood|
+    .col-xs-12.col-sm-6.col-md-4.margin-top-40{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", "data-whatever" => "#{mood.id}"}
+      .mood-box.overlay-wrapper
+        =image_tag(mood.background.url, class: "bg-mood")
+        .dark-overlay
+          .text-overlay.text-center
+            =image_tag(mood.icon.url)
+            .text-center
+              %h4=mood.name
 
-  .row.row-centered
-    -Hood.all.each do |hood|
-      .col-xs-12.col-sm-6.col-centered
-        =link_to hood do 
-          .hood-box.overlay-wrapper
-            =image_tag(hood.avatar.url, class: "", style: "width:100%;")
-            .dark-overlay
-              .text-overlay
-                %h3.text-center
-                  %i.fa.fa-map-marker
-                  =hood.name
+=render "location_modal"

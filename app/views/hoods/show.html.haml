@@ -1,7 +1,19 @@
-.text-center 
-  %h1
-    What Mood Are You In?
-  %h3
-    Select a Food Dish Playlist by Mood 
+.row.row-centered
+  .col-xs-12.col-sm-8.col-centered
+    .text-center
+      %h1{style: "margin:10px 0 0 0;"} Hungry, But Don't Know What To Eat?
+      %h1{style: "margin:0;"} Find The Perfect Take-Out Meal
+      %h3{style: "font-weight:200;"}
+        Visually Browse 
+        %b{style:"color:rgb(255, 0, 116);"}=@hood.name
+        Delivery Dishes by Your Mood
+      %p
+        Not in
+        %b="#{@hood.name}?"
+        %span.link-spoof{"data-target" => "#myModal", "data-toggle" => "modal", :type => "link"}
+          Click here 
+        to enter your delivery location. 
+
 
 =render "mood_list"
+=render "pages/location_modal"

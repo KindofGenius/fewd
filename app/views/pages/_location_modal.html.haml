@@ -1,0 +1,26 @@
+/ Modal
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header{style:"color:grey;"}
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &times;
+        .text-center
+          %h1#myModalLabel.modal-title
+            First We Need to Know Where to Search?
+          %h4 Where is your food going? Enter an address or select a neighborhood.
+      .modal-body
+        .row.row-centered{style:"background: rgb(231, 231, 231);padding-top:20px;"}
+          .col-xs-12.col-centered
+            .form-group.text-center
+              = form_tag(hoods_search_path, :method => "get", class: "", id: "search-form") do
+                .col-xs-12.col-sm-8{style:"margin-bottom:10px;"}
+                  = text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter Your Delivery Address (i.e. 123 Main Street, Newark, DE)"
+                .col-xs-12.col-sm-2{style: "padding-left:0px;"}
+                  %button.btn.btn-info{:type => "submit"}
+                    %i.icon-search
+                    Find Food in My Area
+                .clearfix
+        %div{style: "  margin-top: 15px;"}
+        =render "pages/hood_select"
+      .modal-footer

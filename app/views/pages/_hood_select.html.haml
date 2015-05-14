@@ -1,0 +1,12 @@
+.hood-select
+  .row.row-centered
+    -Hood.all.each do |hood|
+      .col-xs-12.col-sm-6.col-centered
+        =link_to hood do 
+          .hood-box.overlay-wrapper
+            =image_tag(hood.avatar.url, class: "", style: "width:100%;")
+            .dark-overlay
+              .text-overlay
+                %h3.text-center
+                  %i.fa.fa-map-marker
+                  =hood.name
