@@ -1,4 +1,12 @@
 Fewd::Application.routes.draw do
+  resources :dish_foods
+
+  resources :foods
+
+  resources :diet_dishes
+
+  resources :diets
+
   resources :restaurant_services
 
   resources :services

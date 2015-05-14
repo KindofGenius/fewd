@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @diet.name
+%p
+  %b Description:
+  = @diet.description
+
+= link_to 'Edit', edit_diet_path(@diet)
+\|
+= link_to 'Back', diets_path

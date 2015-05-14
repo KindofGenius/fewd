@@ -1,0 +1,26 @@
+%h1 Listing diets
+
+.panel.panel-default
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Icon
+        %th BG
+        %th Name
+        %th
+        %th
+        %th
+
+    %tbody
+      - @diets.each do |diet|
+        %tr
+          %td= image_tag(diet.icon.url, class: "img-circle", style:"height:20px;background:black;")
+          %td= image_tag(diet.background.url, class: "img-circle", style:"height:20px;")
+          %td= diet.name
+          %td= link_to 'Show', diet
+          %td= link_to 'Edit', edit_diet_path(diet)
+          %td= link_to 'Destroy', diet, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Mood', new_diet_path

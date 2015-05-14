@@ -1,0 +1,22 @@
+= form_for @diet, :html => { :multipart => true, :class => "form-horizontal" } do |f|
+  - if @diet.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@diet.errors.count, "error")} prohibited this mood from being saved:"
+      %ul
+        - @diet.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :name, class: "col-sm-2 control-label"
+    .col-sm-8= f.text_field :name, class: "form-control"
+  .form-group
+    = f.label :description, class: "col-sm-2 control-label"
+    .col-sm-8= f.text_area :description, class: "form-control"
+  .form-group
+    = f.label "Add Icon", class: "col-sm-2 control-label"
+    .col-sm-8= f.file_field :icon, class: "form-control"
+  .form-group
+    = f.label "Add Background", class: "col-sm-2 control-label"
+    .col-sm-8= f.file_field :background, class: "form-control"
+  .actions
+    = f.submit 'Save', class: "btn btn-info", style: ""

@@ -1,0 +1,23 @@
+%h1 Listing diet_dishes
+
+%table
+  %thead
+    %tr
+      %th Dish
+      %th Diet
+      %th
+      %th
+      %th
+
+  %tbody
+    - @diet_dishes.each do |diet_dish|
+      %tr
+        %td= diet_dish.dish_id
+        %td= diet_dish.diet_id
+        %td= link_to 'Show', diet_dish
+        %td= link_to 'Edit', edit_diet_dish_path(diet_dish)
+        %td= link_to 'Destroy', diet_dish, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Diet dish', new_diet_dish_path

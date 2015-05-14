@@ -11,10 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511172133) do
+ActiveRecord::Schema.define(version: 20150514010653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "diet_dishes", force: true do |t|
+    t.integer  "dish_id"
+    t.integer  "diet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "diets", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+  end
+
+  create_table "dish_foods", force: true do |t|
+    t.integer  "dish_id"
+    t.integer  "food_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "dish_images", force: true do |t|
     t.integer  "dish_id"
@@ -42,6 +71,21 @@ ActiveRecord::Schema.define(version: 20150511172133) do
   end
 
   add_index "dishes", ["slug"], name: "index_dishes_on_slug", unique: true, using: :btree
+
+  create_table "foods", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false

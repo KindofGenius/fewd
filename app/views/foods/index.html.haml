@@ -1,0 +1,26 @@
+%h1 Listing foods
+
+.panel.panel-default
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Icon
+        %th BG
+        %th Name
+        %th
+        %th
+        %th
+
+    %tbody
+      - @foods.each do |food|
+        %tr
+          %td= image_tag(food.icon.url, class: "img-circle", style:"height:20px;background:black;")
+          %td= image_tag(food.background.url, class: "img-circle", style:"height:20px;")
+          %td= food.name
+          %td= link_to 'Show', food
+          %td= link_to 'Edit', edit_food_path(food)
+          %td= link_to 'Destroy', food, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Mood', new_food_path
