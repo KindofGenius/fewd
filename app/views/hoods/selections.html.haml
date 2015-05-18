@@ -1,0 +1,18 @@
+%h1.text-center
+  =image_tag(@yum.icon.url, style:"max-width:20px;")
+  =@yum.name
+%h4.text-center=@yum.description
+-@dishes.each do |dish|
+  .col-sm-12.col-md-6
+    =link_to dish_path(dish) do
+      .dish-box{style: "background:url(#{dish.dish_images.first.avatar.url}) no-repeat center center;xx-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;"}
+        =#image_tag(dish.dish_images.first.avatar.url, style: "width:100%;")
+        .dark-overlay
+          .text-overlay.text-center
+            %h3=dish.name
+            -@restaurant = Restaurant.find(dish.restaurant_id)
+            %p
+              %b{style:"text-transform:uppercase;"}=@restaurant.name
+              %br
+              %i.fa.fa-map-marker
+              =@restaurant.full_street_address

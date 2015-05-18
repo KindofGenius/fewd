@@ -1,5 +1,5 @@
 class HoodsController < ApplicationController
-  before_action :set_hood, only: [:show, :edit, :update, :destroy, :mood]
+  before_action :set_hood, only: [:show, :edit, :update, :destroy, :mood, :foods, :food]
 
   # GET /hoods
   # GET /hoods.json
@@ -96,6 +96,22 @@ class HoodsController < ApplicationController
     #dish_moods = DishMood.where("mood_id = ?", params[:mood])
     #@dishes = dish_moods.map{|dm| Dish.find(dm.dish_id)}
   end
+  def foods
+    @moods = Food.all
+    @yum = "food".to_sym
+    render 'show'
+  end
+  
+  def food
+    @full_width = true
+    @hood = Hood.find(params[:id])
+    @yum = Food.find(params[:food_id])
+    dish_foods = DishFood.where("food_id = ?", @yum).map{|d| d.dish_id}
+    dishes_no_food = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 1)
+    @dishes = dishes_no_food.select{|dish| dish_foods.include?(dish.id)}
+
+    render_selections
+  end
 
   def search
     address = Geocoder.coordinates(params[:search])
@@ -104,6 +120,10 @@ class HoodsController < ApplicationController
   end
 
   private
+
+    def render_selections
+      render 'selections'
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_hood
       @hood = Hood.find(params[:id])

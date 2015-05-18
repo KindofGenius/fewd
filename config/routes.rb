@@ -15,6 +15,8 @@ Fewd::Application.routes.draw do
   resources :hoods do
     member do
       get :mood
+      get 'food/:food_id', :action => 'food', :as => 'food'
+      get :foods
     end
   end
 
