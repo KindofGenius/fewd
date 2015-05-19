@@ -16,7 +16,11 @@
       - @dishes.each do |dish|
         %tr
           %td= image_tag(dish.dish_images.first.avatar.url, class: "img-responsive img-circle", style:"height:20px;")
-          %td= Restaurant.find(dish.restaurant_id).name
+          %td
+            -unless Restaurant.find(dish.restaurant_id).nil?
+              = Restaurant.find(dish.restaurant_id).name
+            -else
+              = dish.restaurant_id
           %td= dish.name
           %td= dish.moods.first.name
           %td= link_to 'Show', dish
