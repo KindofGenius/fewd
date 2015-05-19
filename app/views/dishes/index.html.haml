@@ -21,7 +21,11 @@
               = Restaurant.find(dish.restaurant_id).name
             -else
               = dish.restaurant_id
-          %td= dish.name
+          %td
+            -unless dish.nil?
+              = dish.name
+            -else
+              =dish.id
           %td= dish.moods.first.name
           %td= link_to 'Show', dish
           %td= link_to 'Edit', edit_dish_path(dish)
