@@ -26,7 +26,9 @@
               = dish.name
             -else
               =dish.id
-          %td= dish.moods.first.name
+          %td
+            -if dish.moods.count > 0
+              = dish.moods.first.name
           %td= link_to 'Show', dish
           %td= link_to 'Edit', edit_dish_path(dish)
           %td= link_to 'Destroy', dish, :method => :delete, :data => { :confirm => 'Are you sure?' }
