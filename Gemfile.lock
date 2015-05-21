@@ -136,6 +136,8 @@ GEM
       celluloid (~> 0.16.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    local_time (1.0.2)
+      coffee-rails
     lumberjack (1.0.9)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -303,6 +305,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  local_time (~> 1.0.2)
   nested_form
   paperclip (~> 4.2)
   pg

@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require jquery_nested_form
 //= require wice_grid
+//= require local_time
 //= require_tree .

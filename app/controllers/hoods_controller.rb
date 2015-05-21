@@ -90,6 +90,7 @@ class HoodsController < ApplicationController
       dish_moods = DishMood.where("mood_id = ?", @yum).map{|d| d.dish_id}
       dishes_no_mood = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 0.75)
       @dishes = dishes_no_mood.select{|dish| dish_moods.include?(dish.id)}
+      @dishes.shuffle!
     end
     #@dishes = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 2)
     #raise "#{@dishes.count}"
