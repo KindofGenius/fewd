@@ -1,5 +1,5 @@
 class MoodsController < ApplicationController
-  before_action :set_mood, only: [:show, :edit, :update, :destroy, :hood]
+  before_action :set_mood, only: [:show, :edit, :update, :destroy]
 
   # GET /moods
   # GET /moods.json

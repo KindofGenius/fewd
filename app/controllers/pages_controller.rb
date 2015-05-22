@@ -5,9 +5,13 @@ class PagesController < ApplicationController
   end
   def search
     @coords = Geocoder.coordinates(params[:search])
-    @street = Geocoder.search(@coords).first.address.split(",").first
-    #@hood = Hood.near([address.first, address.last], 2).first
-    @moods = Mood.all
+    any_dishes = Dish.joins(:restaurant).near([@coords.first, @coords.last], 0.75)#check if there is any dishes near by
+    if any_dishes.count < 1
+      render "hoods/search"
+    else
+      @street = Geocoder.search(@coords).first.address.split(",").first
+      @moods = Mood.all
+    end
   end
 
   def move
@@ -25,10 +29,6 @@ class PagesController < ApplicationController
   end
 
   def contact
-    @coords = Geocoder.coordinates(params[:search])
-    @street = Geocoder.search(@coords).first.address.split(",").first
-    #@hood = Hood.near([address.first, address.last], 2).first
-    @moods = Mood.all
   end
 
 
