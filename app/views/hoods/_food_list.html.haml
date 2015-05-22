@@ -1,10 +1,14 @@
--@moods.each do |mood|
+-@foods.each do |food|
   .col-xs-12.col-sm-6.col-md-4.margin-top-40
-    =link_to mood_hood_path(@hood, mood: mood.id) do
+    =link_to food_hood_path(@hood.id, food.id) do
       .mood-box.overlay-wrapper
-        =image_tag(mood.background.url, class: "bg-mood")
+        =image_tag(food.background.url, class: "bg-mood")
         .dark-overlay
           .text-overlay.text-center
-            =image_tag(mood.icon.url)
+            =image_tag(food.icon.url)
             .text-center
-              %h4=mood.name
+              %h4=food.name
+              -dish_foods = DishFood.where("food_id = ?", food.id).map{|d| d.dish_id}
+              -dishes_no_food = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 0.75)
+              -@dishes = dishes_no_food.select{|dish| dish_foods.include?(dish.id)}
+              %p=@dishes.count

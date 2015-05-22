@@ -11,16 +11,9 @@ class HoodsController < ApplicationController
   # GET /hoods/1.json
   def show
     @restaurants = Restaurant.near([@hood.latitude, @hood.longitude], 1)
-    if params[:yum] == "foods"
-      @moods = Food.all
-      @yum = "food".to_sym
-    elsif params[:yum] == "diets"
-      @moods = Diet.all
-      @yum = "diet".to_sym
-    else
-      @moods = Mood.all
-      @yum = "mood".to_sym
-    end
+    @moods = Mood.all
+    @foods = Food.all
+    @diets = Diet.all
   end
 
   # GET /hoods/new

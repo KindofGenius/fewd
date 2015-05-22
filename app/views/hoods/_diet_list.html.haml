@@ -1,0 +1,14 @@
+-@diets.each do |diet|
+  .col-xs-12.col-sm-6.col-md-4.margin-top-40
+    =link_to diet_hood_path(@hood.id, diet.id) do
+      .mood-box.overlay-wrapper
+        =image_tag(diet.background.url, class: "bg-mood")
+        .dark-overlay
+          .text-overlay.text-center
+            =image_tag(diet.icon.url)
+            .text-center
+              %h4=diet.name
+              -dish_diets = DietDish.where("diet_id = ?", diet.id).map{|d| d.dish_id}
+              -dishes_no_diet = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 0.75)
+              -@dishes = dishes_no_diet.select{|dish| dish_diets.include?(dish.id)}
+              %p=@dishes.count
