@@ -4,25 +4,28 @@
   %table.table.table-striped
     %thead
       %tr
+        %th Name
         %th Address
         %th City
         %th State
         %th Country
         %th Longitude
         %th Latitude
-        %th
+        %th # of Dishes
         %th
         %th
 
     %tbody
       - @hoods.each do |hood|
         %tr
+          %td= hood.name
           %td= hood.address
           %td= hood.city
           %td= hood.state
           %td= hood.country
           %td= hood.longitude
           %td= hood.latitude
+          %td= Dish.joins(:restaurant).near([hood.latitude, hood.longitude], 0.75).count
           %td= link_to 'Show', hood
           %td= link_to 'Edit', edit_hood_path(hood)
           %td= link_to 'Destroy', hood, :method => :delete, :data => { :confirm => 'Are you sure?' }
