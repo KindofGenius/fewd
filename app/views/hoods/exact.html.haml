@@ -1,0 +1,29 @@
+.row.row-centered
+  .col-xs-12.col-sm-9.col-centered
+    .text-center
+      %h1{style: "margin:10px 0 0 0;font-weight:500;text-transform: uppercase;font-size: 57px;"} 
+        %span{style:"text-transform:none;font-size: 50px;"}
+          It's 
+          =local_time(Time.now, "%A")
+          at
+          =local_time(Time.now, "%l:%M %p")
+        %br
+        %span{style:"font-weight:800;"}
+          and you're Hungry.
+      %h1{style: "margin:3px;font-size:40px;"}
+        %i Find the perfect meal for right now.
+      %h3{style: "font-weight:200;"}
+        Visually Browse 
+        %b{style:"color:rgb(255, 0, 116);"}=@street
+        Delivery Dishes by Your Mood.
+        %br
+        %span{style:"font-size:80%;"}Then simply order from your favorite delivery services.
+      %p
+        Not in
+        %b="#{@street}?"
+        %span.link-spoof{"data-target" => "#myModal", "data-toggle" => "modal", :type => "link"}
+          Click here 
+        to enter your delivery location. 
+
+=#render "mood_list"
+=#render "pages/location_modal"

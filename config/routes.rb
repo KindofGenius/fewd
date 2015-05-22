@@ -12,6 +12,7 @@ Fewd::Application.routes.draw do
   resources :services
   
   get "hoods/search"
+  get "hoods/exact"
   resources :hoods do
     member do
       get :mood

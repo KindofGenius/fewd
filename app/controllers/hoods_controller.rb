@@ -120,6 +120,13 @@ class HoodsController < ApplicationController
     redirect_to @hood.first if @hood.count > 0
   end
 
+  def exact
+    @coords = Geocoder.coordinates(params[:search])
+    @street = Geocoder.search(@coords).first.address.split(",").first
+    #@hood = Hood.near([address.first, address.last], 2).first
+    @moods = Mood.all
+  end
+
   private
 
     def render_selections
