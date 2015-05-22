@@ -1,5 +1,5 @@
 class MoodsController < ApplicationController
-  before_action :set_mood, only: [:show, :edit, :update, :destroy]
+  before_action :set_mood, only: [:show, :edit, :update, :destroy, :hood]
 
   # GET /moods
   # GET /moods.json
@@ -10,6 +10,12 @@ class MoodsController < ApplicationController
   # GET /moods/1
   # GET /moods/1.json
   def show
+    @coords = params[:location]
+    @full_width = true
+    dish_moods = DishMood.where("mood_id = ?", @mood.id).map{|d| d.dish_id}
+    dishes_no_mood = Dish.joins(:restaurant).near([@coords.first, @coords.last], 0.75)
+    @dishes = dishes_no_mood.select{|dish| dish_moods.include?(dish.id)}
+    @dishes.shuffle!
   end
 
   # GET /moods/new
@@ -20,7 +26,6 @@ class MoodsController < ApplicationController
   # GET /moods/1/edit
   def edit
   end
-
   # POST /moods
   # POST /moods.json
   def create

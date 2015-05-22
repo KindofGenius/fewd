@@ -15,9 +15,14 @@ Fewd::Application.routes.draw do
   get "hoods/exact"
   resources :hoods do
     member do
-      get :mood
-      get 'food/:food_id', :action => 'food', :as => 'food'
+      #get :mood
+      get :moods
+      get 'mood/:mood_id', :action => 'mood', :as => 'mood'
       get :foods
+      get 'food/:food_id', :action => 'food', :as => 'food'
+      get :diets
+      get 'diet/:diet_id', :action => 'diet', :as => 'diet'
+      
     end
   end
 
@@ -35,6 +40,7 @@ Fewd::Application.routes.draw do
   get "pages/about"
   get "pages/contact"
   get "pages/faq"
+  get "pages/search"
   get "pages/move"
 
   devise_for :users

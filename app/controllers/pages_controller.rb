@@ -3,6 +3,12 @@ class PagesController < ApplicationController
     #@full_width = true
     @moods = Mood.all
   end
+  def search
+    @coords = Geocoder.coordinates(params[:search])
+    @street = Geocoder.search(@coords).first.address.split(",").first
+    #@hood = Hood.near([address.first, address.last], 2).first
+    @moods = Mood.all
+  end
 
   def move
     address = request.location
@@ -15,10 +21,16 @@ class PagesController < ApplicationController
   end
 
   def about
+
   end
 
   def contact
+    @coords = Geocoder.coordinates(params[:search])
+    @street = Geocoder.search(@coords).first.address.split(",").first
+    #@hood = Hood.near([address.first, address.last], 2).first
+    @moods = Mood.all
   end
+
 
   def faq
   end

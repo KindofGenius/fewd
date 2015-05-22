@@ -1,6 +1,6 @@
 -@moods.each do |mood|
   .col-xs-12.col-sm-6.col-md-4.margin-top-40
-    =link_to mood_hood_path(@hood, "#{@yum}" => mood.id) do
+    =link_to mood_hood_path(@hood.id, mood.id) do
       .mood-box.overlay-wrapper
         =image_tag(mood.background.url, class: "bg-mood")
         .dark-overlay
