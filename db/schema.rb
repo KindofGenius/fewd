@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514010653) do
+ActiveRecord::Schema.define(version: 20150522063148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,10 @@ ActiveRecord::Schema.define(version: 20150514010653) do
     t.string   "icon_content_type"
     t.integer  "icon_file_size"
     t.datetime "icon_updated_at"
+    t.string   "slug"
   end
+
+  add_index "diets", ["slug"], name: "index_diets_on_slug", unique: true, using: :btree
 
   create_table "dish_foods", force: true do |t|
     t.integer  "dish_id"
@@ -85,7 +88,10 @@ ActiveRecord::Schema.define(version: 20150514010653) do
     t.string   "background_content_type"
     t.integer  "background_file_size"
     t.datetime "background_updated_at"
+    t.string   "slug"
   end
+
+  add_index "foods", ["slug"], name: "index_foods_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -132,7 +138,10 @@ ActiveRecord::Schema.define(version: 20150514010653) do
     t.integer  "background_file_size"
     t.datetime "background_updated_at"
     t.text     "description"
+    t.string   "slug"
   end
+
+  add_index "moods", ["slug"], name: "index_moods_on_slug", unique: true, using: :btree
 
   create_table "restaurant_services", force: true do |t|
     t.integer  "restaurant_id"

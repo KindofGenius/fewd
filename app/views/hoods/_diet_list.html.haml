@@ -1,6 +1,6 @@
 -@diets.each do |diet|
   .col-xs-12.col-sm-6.col-md-4.margin-top-40
-    =link_to diet_hood_path(@hood.id, diet.id) do
+    =link_to diet_hood_path(@hood.slug, diet.slug) do
       .mood-box.overlay-wrapper
         =image_tag(diet.background.url, class: "bg-mood")
         .dark-overlay
