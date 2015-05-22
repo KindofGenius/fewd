@@ -2,11 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .hood-box
-  height: 300px
+  height: 225px
   width: 100%
-  img
+  background-position: no-repeat center center
+  -webkit-background-size: 175%
+  -moz-background-size: 175%
+  -o-background-size: 175%
+  background-size: 175%
+  -webkit-transition: all 0.5s ease
+  -moz-transition: all 0.5s ease
+  -o-transition: all 0.5s ease
+  -ms-transition: all 0.5s ease
+  transition: all 0.5s ease
     //height: 300px
   .dark-overlay
     .text-overlay
       position: relative
       top: 40%
+    -webkit-transition: all 0.5s ease
+    -moz-transition: all 0.5s ease
+    -o-transition: all 0.5s ease
+    -ms-transition: all 0.5s ease
+    transition: all 0.5s ease      
+  &:hover
+    -webkit-background-size: 200%
+    -moz-background-size: 200%
+    -o-background-size: 200%
+    background-size: 200%

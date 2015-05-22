@@ -3,8 +3,7 @@
     -Hood.all.each do |hood|
       .col-xs-12.col-sm-6.col-md-4.col-centered
         =link_to hood do 
-          .hood-box.overlay-wrapper
-            =image_tag(hood.avatar.url, class: "", style: "width:100%;")
+          .hood-box.overlay-wrapper{style: "background-image:url('#{hood.avatar.url}');"}
             .dark-overlay
               .text-overlay
                 %h3.text-center
