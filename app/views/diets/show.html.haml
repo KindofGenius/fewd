@@ -1,12 +1,5 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @diet.name
-%p
-  %b Description:
-  = @diet.description
-
-= link_to 'Edit', edit_diet_path(@diet)
-\|
-= link_to 'Back', diets_path
+%h1.text-center
+  =image_tag(@diet.icon.url, style:"max-width:20px;")
+  =@diet.name
+%h4.text-center=@diet.description
+=render "dishes/dishes_layout"

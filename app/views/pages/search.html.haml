@@ -23,20 +23,52 @@
         %span.link-spoof{"data-target" => "#myModal", "data-toggle" => "modal", :type => "link"}
           Click here 
         to enter your delivery location. 
-.row
-  -@moods.each do |mood|
-    .col-xs-12.col-sm-6.col-md-4.margin-top-40
-      =link_to mood_path(mood, :location => @coords) do
-        .mood-box.overlay-wrapper
-          =image_tag(mood.background.url, class: "bg-mood")
-          .dark-overlay
-            .text-overlay.text-center
-              =image_tag(mood.icon.url)
-              .text-center
-                %h4=mood.name
-                -dish_moods = DishMood.where("mood_id = ?", mood.id).map{|d| d.dish_id}
-                -dishes_no_mood = Dish.joins(:restaurant).near([@coords.first, @coords.last], 0.75)
-                -@dishes = dishes_no_mood.select{|dish| dish_moods.include?(dish.id)}
-                %p=@dishes.count
 
+%ul.nav.nav-tabs.nav-justified{style: "margin-top:15px;"}
+  %li.active{:role => "presentation"}
+    %a{"aria-controls" => "mood", "data-toggle" => "tab", :href => "#mood", :role => "tab"}
+      %span.glyphicon.glyphicon-glass
+      Moods
+  %li{:role => "presentation"}
+    %a{"aria-controls" => "food", "data-toggle" => "tab", :href => "#food", :role => "tab"} 
+      %span.glyphicon.glyphicon-ice-lolly-tasted
+      Foods
+  %li{:role => "presentation"}
+    %a{"aria-controls" => "diet", "data-toggle" => "tab", :href => "#diet", :role => "tab"} 
+      %span.glyphicon.glyphicon-grain
+      Diets
+.tab-content
+  #mood.tab-pane.active.fade.in{:role => "tabpanel"}
+    -@moods.each do |mood|
+      .col-xs-12.col-sm-6.col-md-4.margin-top-40
+        =link_to mood_path(mood.slug, location: @coords) do
+          .mood-box.overlay-wrapper
+            =image_tag(mood.background.url, class: "bg-mood")
+            .dark-overlay
+              .text-overlay.text-center
+                =image_tag(mood.icon.url)
+                .text-center
+                  %h4=mood.name
+  #food.tab-pane.fade{:role => "tabpanel"}
+    -@foods.each do |food|
+      .col-xs-12.col-sm-6.col-md-4.margin-top-40
+        =link_to food_path(food.slug, location: @coords) do
+          .mood-box.overlay-wrapper
+            =image_tag(food.background.url, class: "bg-mood")
+            .dark-overlay
+              .text-overlay.text-center
+                =image_tag(food.icon.url)
+                .text-center
+                  %h4=food.name
+  #diet.tab-pane.fade{:role => "tabpanel"}
+    -@diets.each do |diet|
+      .col-xs-12.col-sm-6.col-md-4.margin-top-40
+        =link_to diet_path(diet.slug, location: @coords) do
+          .mood-box.overlay-wrapper
+            =image_tag(diet.background.url, class: "bg-mood")
+            .dark-overlay
+              .text-overlay.text-center
+                =image_tag(diet.icon.url)
+                .text-center
+                  %h4=diet.name
 =render "location_modal"

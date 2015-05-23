@@ -1,12 +1,5 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @food.name
-%p
-  %b Description:
-  = @food.description
-
-= link_to 'Edit', edit_food_path(@food)
-\|
-= link_to 'Back', foods_path
+%h1.text-center
+  =image_tag(@food.icon.url, style:"max-width:20px;")
+  =@food.name
+%h4.text-center=@food.description
+=render "dishes/dishes_layout"

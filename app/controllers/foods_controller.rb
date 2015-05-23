@@ -10,6 +10,12 @@ class FoodsController < ApplicationController
   # GET /foods/1
   # GET /foods/1.json
   def show
+    @coords = params[:location]
+    @full_width = true
+    dish_foods = DishFood.where("food_id = ?", @food.id).map{|d| d.dish_id}
+    dishes_no_food = Dish.joins(:restaurant).near([@coords.first, @coords.last], 0.75)
+    @dishes = dishes_no_food.select{|dish| dish_foods.include?(dish.id)}
+    @dishes.shuffle!
   end
 
   # GET /foods/new

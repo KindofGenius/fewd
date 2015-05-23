@@ -1,0 +1,20 @@
+%ul.nav.nav-tabs.nav-justified{style: "margin-top:15px;"}
+  %li.active{:role => "presentation"}
+    %a{"aria-controls" => "mood", "data-toggle" => "tab", :href => "#mood", :role => "tab"}
+      %span.glyphicon.glyphicon-glass
+      Moods
+  %li{:role => "presentation"}
+    %a{"aria-controls" => "food", "data-toggle" => "tab", :href => "#food", :role => "tab"} 
+      %span.glyphicon.glyphicon-ice-lolly-tasted
+      Foods
+  %li{:role => "presentation"}
+    %a{"aria-controls" => "diet", "data-toggle" => "tab", :href => "#diet", :role => "tab"} 
+      %span.glyphicon.glyphicon-grain
+      Diets
+.tab-content
+  #mood.tab-pane.active.fade.in{:role => "tabpanel"}
+    =render "hoods/mood_list"
+  #food.tab-pane.fade{:role => "tabpanel"}
+    =render "hoods/food_list"
+  #diet.tab-pane.fade{:role => "tabpanel"}
+    =render "hoods/diet_list"

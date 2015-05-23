@@ -24,24 +24,5 @@
         %span.link-spoof{"data-target" => "#myModal", "data-toggle" => "modal", :type => "link"}
           Click here 
         to enter your delivery location. 
-%ul.nav.nav-tabs.nav-justified{style: "margin-top:50px;"}
-  %li.active{:role => "presentation"}
-    %a{"aria-controls" => "mood", "data-toggle" => "tab", :href => "#mood", :role => "tab"}
-      %span.glyphicon.glyphicon-glass
-      Moods
-  %li{:role => "presentation"}
-    %a{"aria-controls" => "food", "data-toggle" => "tab", :href => "#food", :role => "tab"} 
-      %span.glyphicon.glyphicon-ice-lolly-tasted
-      Foods
-  %li{:role => "presentation"}
-    %a{"aria-controls" => "diet", "data-toggle" => "tab", :href => "#diet", :role => "tab"} 
-      %span.glyphicon.glyphicon-grain
-      Diets
-.tab-content
-  #mood.tab-pane.active.fade.in{:role => "tabpanel"}
-    =render "mood_list"
-  #food.tab-pane.fade{:role => "tabpanel"}
-    =render "food_list"
-  #diet.tab-pane.fade{:role => "tabpanel"}
-    =render "diet_list"
+=render "filter_tabs"
 =render "pages/location_modal"

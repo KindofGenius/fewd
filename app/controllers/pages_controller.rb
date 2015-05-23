@@ -11,6 +11,8 @@ class PagesController < ApplicationController
     else
       @street = Geocoder.search(@coords).first.address.split(",").first
       @moods = Mood.all
+      @foods = Food.all
+      @diets = Diet.all
     end
   end
 

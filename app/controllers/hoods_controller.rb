@@ -10,7 +10,7 @@ class HoodsController < ApplicationController
   # GET /hoods/1
   # GET /hoods/1.json
   def show
-    @restaurants = Restaurant.near([@hood.latitude, @hood.longitude], 1)
+    @restaurants = Restaurant.near([@hood.latitude, @hood.longitude], 0.75)
     @moods = Mood.all
     @foods = Food.all
     @diets = Diet.all
