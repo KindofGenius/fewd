@@ -22,6 +22,10 @@
         .col-xs-12
           = yield
     #footer{style:"height:200px;"}
+      :javascript
+        $(document).ready(function() {
+          $('#simple-menu').sidr();
+        });
       =#render "layouts/footer"
 
 
