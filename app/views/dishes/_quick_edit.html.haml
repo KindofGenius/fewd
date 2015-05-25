@@ -1,0 +1,12 @@
+%tr{class: "quick-edit-#{dish.id} boo"}
+  %td
+    = form_for dish, :html => { :multipart => true, :remote => true } do |f|
+      .row
+      .col-xs-12.col-sm-4
+        =f.select :mood_ids, Mood.all.collect {|x| [x.name, x.id]}, {}, {:multiple => true, class: "form-control"}
+      .col-xs-12.col-sm-4
+        =f.select :diet_ids, Diet.all.collect {|x| [x.name, x.id]}, {}, {:multiple => true, class: "form-control"}
+      .col-xs-12.col-sm-4
+        =f.select :food_ids, Food.all.collect {|x| [x.name, x.id]}, {}, {:multiple => true, class: "form-control"}
+      .actions
+        = f.submit 'Save', class: "btn btn-info", style: "", :data => {:dish_id => "#{dish.id}"}

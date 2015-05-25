@@ -11,6 +11,7 @@
         %th
         %th
         %th
+        %th
 
     %tbody
       - @dishes.each do |dish|
@@ -32,6 +33,12 @@
           %td= link_to 'Show', dish
           %td= link_to 'Edit', edit_dish_path(dish)
           %td= link_to 'Destroy', dish, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td
+            %a.quick-edit-reveal{:data => {:dish_id => "#{dish.id}"}} Quick Edit
+        .edit-ajax
+          =render partial: "quick_edit", :locals => {:dish => dish}
+
+
 
 %br
 
