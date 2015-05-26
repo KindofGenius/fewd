@@ -39,7 +39,7 @@
           =render partial: "quick_edit", :locals => {:dish => dish}
 
 
-
+= will_paginate @dishes, renderer: BootstrapPagination::Rails
 %br
 
 = link_to 'New Dish', new_dish_path
