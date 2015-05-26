@@ -6,7 +6,7 @@ $ ->
     dish_id = $(this).data("dish-id")
     $('tr.quick-edit-'+ dish_id ).toggle(500)
 
-  $('input.btn').click ->
+  $('.quicky input.btn').click ->
     dish_id = $(this).data("dish-id")
     $('tr.quick-edit-'+ dish_id ).toggle(500)
     alert('Dish data has been updated')

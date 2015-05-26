@@ -8,5 +8,5 @@
         =f.select :diet_ids, Diet.all.collect {|x| [x.name, x.id]}, {}, {:multiple => true, class: "form-control"}
       .col-xs-12.col-sm-4
         =f.select :food_ids, Food.all.collect {|x| [x.name, x.id]}, {}, {:multiple => true, class: "form-control"}
-      .actions
+      .actions.quicky
         = f.submit 'Save', class: "btn btn-info", style: "", :data => {:dish_id => "#{dish.id}"}
