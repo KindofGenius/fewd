@@ -29,5 +29,9 @@
   .form-group
     = f.label "Select Food Category", class: "col-sm-2 control-label"
     .col-sm-8=f.select :food_ids, Food.all.collect {|x| [x.name, x.id]}, {}, {:multiple => true, class: "form-control"}
+
+  .form-group
+    = f.label "open tags (comma separated)", class: "col-sm-2 control-label"
+    .col-sm-8= f.text_field :tag_list, class: "form-control"
   .actions
     = f.submit 'Save', class: "btn btn-info"
