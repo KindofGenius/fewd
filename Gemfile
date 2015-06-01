@@ -71,7 +71,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem "font-awesome-rails"
 gem "wice_grid", '3.4.2'
 gem 'local_time', '~> 1.0.2'
-gem 'will_paginate-bootstrap'
+#gem 'will_paginate-bootstrap'
 gem 'acts-as-taggable-on', '~> 3.4'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

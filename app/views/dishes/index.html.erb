@@ -1,0 +1,23 @@
+<h1> New Searchable Dishes </h1>
+<%= grid(@dishes_grid) do |g|                                     
+  g.column name: 'ID', attribute: 'id'
+  g.column name: 'Name', attribute: 'name'
+  g.column name: 'Restaurant', attribute: 'id', custom_filter: Dish.all.map{|d| [Restaurant.find(d.restaurant_id).name, Restaurant.find(d.restaurant_id).name]}.uniq do |dish|
+    Restaurant.find(dish.restaurant_id).name
+  end
+  g.column name: 'View' do |dish|
+    link_to "View", dish
+  end
+  g.column name: 'Edit' do |dish|
+    link_to "Edit", edit_dish_path(dish)
+  end
+  g.column name: 'Delete' do |dish|
+    link_to "Delete", dish, method: :delete, data: { confirm: 'Are you sure?' }
+  end
+  g.column name: 'Quick Edit' do |dish|
+    link_to 'Quick Edit',  'Javascript:', 'data-target' => "#editModal_#{dish.id}", 'data-toggle' => 'modal'
+  end
+  g.column name: 'Quick Edit' do |dish|
+    render "pages/quick_edit_modal", dish: dish
+  end
+end -%>

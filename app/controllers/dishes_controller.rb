@@ -4,7 +4,9 @@ class DishesController < ApplicationController
   # GET /dishes
   # GET /dishes.json
   def index
-    @dishes = Dish.paginate(:page => params[:page], :per_page => 30).order('name ASC')
+    #@dishes = Dish.paginate(:page => params[:page], :per_page => 30).order('name ASC')
+    @dishes = Dish.all
+    @dishes_grid = initialize_grid(@dishes)
   end
 
   # GET /dishes/1
