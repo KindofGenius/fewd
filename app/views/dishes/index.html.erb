@@ -2,7 +2,7 @@
 <%= grid(@dishes_grid) do |g|                                     
   g.column name: 'ID', attribute: 'id'
   g.column name: 'Name', attribute: 'name'
-  g.column name: 'Restaurant', attribute: 'id', custom_filter: Dish.all.map{|d| [Restaurant.find(d.restaurant_id).name, Restaurant.find(d.restaurant_id).name]}.uniq do |dish|
+  g.column name: 'Restaurant', attribute: 'restaurant_id', custom_filter: Dish.all.map{|d| [Restaurant.find(d.restaurant_id).name, d.restaurant_id]}.uniq do |dish|
     Restaurant.find(dish.restaurant_id).name
   end
   g.column name: 'View' do |dish|
