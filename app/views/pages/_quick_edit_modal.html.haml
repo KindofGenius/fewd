@@ -9,6 +9,8 @@
           %h1#quick-edit-modalLabel.modal-title
             =dish.name
       .modal-body
+        =image_tag(dish.dish_images.first.avatar.url, class: "img-responsive")
+        %br
         = form_for dish, :remote => true, :html => { :multipart => true, :data => {:dish_id => "#{dish.id}"} } do |f|
           .row{style: "margin:0 0 20px 0;"}
             .col-xs-12.col-sm-4
