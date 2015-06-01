@@ -10,3 +10,7 @@ $ ->
   #  dish_id = $(this).data("dish-id")
   #  $('tr.quick-edit-'+ dish_id ).toggle(500)
   #  alert('Dish data has been updated')
+
+  $('.edit_dish').on 'submit', ->
+    dish_id = $(this).data("dish-id")
+    $('#editModal_'+ dish_id).modal 'hide'

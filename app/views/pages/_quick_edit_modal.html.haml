@@ -9,7 +9,7 @@
           %h1#quick-edit-modalLabel.modal-title
             =dish.name
       .modal-body
-        = form_for dish, :html => { :multipart => true, :remote => true } do |f|
+        = form_for dish, :remote => true, :html => { :multipart => true, :data => {:dish_id => "#{dish.id}"} } do |f|
           .row{style: "margin:0 0 20px 0;"}
             .col-xs-12.col-sm-4
               %span{style:"color:black;"}=f.label "Moods"
@@ -23,5 +23,5 @@
           .row
             .col-xs-12
               .actions.quicky
-                = f.submit 'Update Categories', class: "btn btn-info", style: "", :data => {:dish_id => "#{dish.id}", :dismiss => "modal"}
+                = f.submit 'Update Categories', class: "btn btn-info", style: "", :data => {:dish_id => "#{dish.id}"}
       .modal-footer

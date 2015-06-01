@@ -15,9 +15,9 @@
     link_to "Delete", dish, method: :delete, data: { confirm: 'Are you sure?' }
   end
   g.column name: 'Quick Edit' do |dish|
-    link_to 'Quick Edit',  'Javascript:', 'data-target' => "#editModal_#{dish.id}", 'data-toggle' => 'modal'
+    link_to 'Quick Edit',  '#', 'data-target' => "#editModal_#{dish.id}", 'data-toggle' => 'modal'
   end
-  g.column name: 'Quick Edit' do |dish|
+  g.column do |dish|
     render "pages/quick_edit_modal", dish: dish
   end
 end -%>
