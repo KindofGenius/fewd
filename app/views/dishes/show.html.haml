@@ -11,7 +11,7 @@
         %br
         and Order Now
     -@services.each do |serv|
-      =link_to serv.restaurant_services.where("restaurant_id = ?", @restaurant.id).first.url, :target => "_blank" do
+      =link_to serv.restaurant_services.where("restaurant_id = ?", @restaurant.id).first.url, :target => "_blank", class: "affiliate", data: { serv: "#{serv.name}", page: "dish page" } do
         .service-icon.pull-left
           =image_tag(serv.avatar.url, class: "img-responsive")
 
