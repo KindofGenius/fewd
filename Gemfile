@@ -73,6 +73,7 @@ gem "wice_grid", '3.4.2'
 gem 'local_time', '~> 1.0.2'
 #gem 'will_paginate-bootstrap'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'jquery-ui-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
