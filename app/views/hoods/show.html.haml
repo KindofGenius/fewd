@@ -1,18 +1,9 @@
 .row.row-centered
   .col-xs-12.col-sm-9.col-centered
     .text-center
-      %h1{style: "margin:10px 0 0 0;font-weight:500;text-transform: uppercase;font-size: 57px;"} 
-        %span{style:"text-transform:none;font-size: 50px;"}
-          It's 
-          =local_time(Time.now, "%A")
-          at
-          =local_time(Time.now, "%l:%M %p")
-        %br
-        %span{style:"font-weight:800;"}
-          and you're Hungry.
-      %h1{style: "margin:3px;font-size:40px;"}
-        %i Find the perfect take-out meal for right now.
-      %h3{style: "font-weight:200;"}
+      %h1{style: "margin:3px;font-size:50px;font-weight:800;text-transform:uppercase;"}
+        Find the perfect take-out meal for right now.
+      %h3{style: "font-weight:200;font-size:30px;"}
         Visually Browse 
         %b{style:"color:rgb(255, 0, 116);"}=@hood.name
         Delivery Dishes by Your Mood.
