@@ -6,6 +6,7 @@
   g.column name: 'Restaurant', attribute: 'restaurant_id', custom_filter: Dish.all.map{|d| [Restaurant.find(d.restaurant_id).name, d.restaurant_id]}.uniq do |dish|
     Restaurant.find(dish.restaurant_id).name
   end
+  g.column name: 'Published', attribute: 'publish'
   g.column name: 'View' do |dish|
     link_to "View", dish
   end

@@ -33,5 +33,8 @@
   .form-group
     = f.label "open tags (comma separated)", class: "col-sm-2 control-label"
     .col-sm-8= f.text_field :tag_list, class: "form-control"
+  .form-group
+    = f.label "Publish (check to publish)", class: "col-sm-2 control-label"
+    .col-sm-8= f.check_box :publish, class: "form-control"
   .actions
     = f.submit 'Save', class: "btn btn-info"

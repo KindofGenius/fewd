@@ -25,6 +25,12 @@
             .col-xs-12.col-sm-4
               %span{style:"color:black;"}=f.label "Cravings"
               =f.select :food_ids, Food.all.collect {|x| [x.name, x.id]}, {}, {:multiple => true, class: "form-control"}
+          %hr
+          .row          
+            .form-group
+              = f.label "Publish (checked == published)", class: "col-sm-4 control-label", style: "color:grey;"
+              .col-sm-3= f.check_box :publish, class: "form-control"
+
           .row
             .col-xs-12
               .actions.quicky

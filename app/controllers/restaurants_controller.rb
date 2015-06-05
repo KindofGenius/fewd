@@ -12,7 +12,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1.json
   def show
     @full_width = true
-    @dishes = @restaurant.dishes
+    @dishes = @restaurant.dishes.published
     @services = @restaurant.services
   end
 
