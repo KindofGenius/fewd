@@ -1,0 +1,12 @@
+.surprise-image
+  =link_to dish_path(@random) do
+    =image_tag(@random.dish_images.first.avatar.url, style: "width:100%;")
+    .grad-overlay
+      .text-center
+        %h2=@random.name
+        -@rest = Restaurant.find(@random.restaurant_id)
+        %p
+          %b{style:"text-transform:uppercase;"}=@rest.name
+          %br
+          %i.fa.fa-map-marker
+          =@rest.full_street_address

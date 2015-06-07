@@ -7,13 +7,20 @@
         =image_tag("unhungr_logo.png", style: "width:130px;")
       .clearfix
     %ul
-      %li
-        =link_to "HOME", root_path
+      -if current_user
+        %li
+          =link_to "PROFILE", current_user
       %li
         =link_to "ABOUT", root_path
       %li
         =link_to "CONTACT", root_path
       %li
         =link_to "FAQ", root_path
-      %li
-        =link_to "SIGN IN", new_user_session_path
+      -unless current_user
+        %li
+          =link_to "SIGN IN", new_user_session_path
+        %li
+          =link_to "SIGN UP", new_user_registration_path
+      -else
+        %li
+          =link_to "LOG OUT", destroy_user_session

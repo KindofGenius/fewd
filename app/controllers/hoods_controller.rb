@@ -9,11 +9,18 @@ class HoodsController < ApplicationController
 
   # GET /hoods/1
   # GET /hoods/1.json
-  def show
-    @restaurants = Restaurant.near([@hood.latitude, @hood.longitude], 0.75)
+  def show    
     @moods = Mood.all
     @foods = Food.all
     @diets = Diet.all
+    @restaurants = Restaurant.near([@hood.latitude, @hood.longitude], 0.75)
+    @rest_ids = @restaurants.map(&:id)
+    @random = Dish.limit(30).where(restaurant_id: @rest_ids).order("RANDOM()").first
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /hoods/new

@@ -1,0 +1,8 @@
+.row
+  .col-xs-12
+    .text-center
+      %h3
+        Feeling Hungry Now? No,
+        %span.refresh-dish=link_to "Click to refresh another dish", hood_path(@hood), remote: true
+    #surprise-surprise
+      =render "hoods/random_image"

@@ -25,9 +25,11 @@
           = yield
     #footer{style:"height:200px;"}
       :javascript
-        $(document).ready(function() {
+        $(document).on("page:change", function(){
           $('#simple-menu').sidr();
         });
+        
+          
       =#render "layouts/footer"
 
 

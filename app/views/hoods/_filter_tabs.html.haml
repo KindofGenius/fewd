@@ -11,6 +11,10 @@
     %a{"aria-controls" => "diet", "data-toggle" => "tab", :href => "#diet", :role => "tab"} 
       %span.glyphicon.glyphicon-grain
       Diets
+  %li{:role => "presentation"}
+    %a{"aria-controls" => "surprise", "data-toggle" => "tab", :href => "#surprise", :role => "tab"} 
+      %span.glyphicon.glyphicon-flash
+      Surprise Me
 .tab-content
   #mood.tab-pane.active.fade.in{:role => "tabpanel"}
     =render "hoods/mood_list"
@@ -18,3 +22,5 @@
     =render "hoods/food_list"
   #diet.tab-pane.fade{:role => "tabpanel"}
     =render "hoods/diet_list"
+  #surprise.tab-pane.fade{:role => "tabpanel"}
+    =render "hoods/surprise"

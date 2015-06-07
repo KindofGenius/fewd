@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery_nested_form
 //= require wice_grid
 //= require local_time
 //= require jquery.sidr.min
+//= require turbolinks
 //= require_tree .

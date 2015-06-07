@@ -15,5 +15,3 @@ $(document).on 'ready page:load', ->
       eventAction: serv_name
       eventLabel: page_type
       eventValue: 1
-
-  
