@@ -16,6 +16,8 @@ class DishesController < ApplicationController
     @full_width = true
     @services = @restaurant.services
     @others = @restaurant.dishes.published.where.not(id: @dish.id)
+    @title = "#{@dish.name} from #{@restaurant.name}"
+    @image = "http://s3.amazonaws.com/fewdify#{@dish.dish_images.first.avatar.url}"
   end
 
   # GET /dishes/new
