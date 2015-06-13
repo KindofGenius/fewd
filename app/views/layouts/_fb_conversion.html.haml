@@ -1,0 +1,7 @@
+:javascript
+  function trackConversionEvent(val, cny) {
+    var cd = {};
+    cd.value = val;
+    cd.currency = cny;
+    _fbq.push(['track', '<pixel_id>', cd]);
+  }
