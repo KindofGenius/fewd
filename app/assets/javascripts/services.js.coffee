@@ -8,6 +8,7 @@ $(document).on 'ready page:load', ->
   $(".affiliate").click ->
     ga_aff($(this).data('serv'), $(this).data('page'))
     trackConversionEvent('10.00','USD')
+    mixpanel.track("Outbound Service", { "Service": $(this).data('serv') })
 
 
   ga_aff = (serv_name, page_type) ->
