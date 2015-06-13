@@ -1,4 +1,4 @@
-.surprise-image
+.surprise-image{:data => {:hood => @hood.name}}
   =link_to dish_path(@random) do
     =image_tag(@random.dish_images.first.avatar.url, style: "width:100%;")
     .grad-overlay

@@ -5,6 +5,15 @@
 
 $(document).on 'ready page:load', ->
 
+  $('.mix-click').click ->
+    sorter = $(this).data("sorter")
+    hood = $(this).data("hood")
+    mixpanel.track("Filter Click", { "Hood": hood, "Sorter": sorter })
+  
+  $('.surprise-image').click ->
+    hood = $(this).data("hood")
+    mixpanel.track("Suprise Image", { "Hood": hood })
+  
   $(".affiliate").click ->
     ga_aff($(this).data('serv'), $(this).data('page'))
     trackConversionEvent('10.00','USD')

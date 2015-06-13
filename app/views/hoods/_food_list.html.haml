@@ -1,14 +1,15 @@
 -@foods.each do |food|
   .col-xs-12.col-sm-6.col-md-4.margin-top-40
     =link_to food_hood_path(@hood.slug, food.slug) do
-      .mood-box.overlay-wrapper
-        =image_tag(food.background.url, class: "bg-mood")
-        .dark-overlay
-          .text-overlay.text-center
-            =image_tag(food.icon.url)
-            .text-center
-              %h4=food.name
-              -dish_foods = DishFood.where("food_id = ?", food.id).map{|d| d.dish_id}
-              -dishes_no_food = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 0.75)
-              -@dishes = dishes_no_food.select{|dish| dish_foods.include?(dish.id)}
-              %p=@dishes.count
+      .mix-click{:data => {:hood => @hood.name, :sorter => food.name}}
+        .mood-box.overlay-wrapper
+          =image_tag(food.background.url, class: "bg-mood")
+          .dark-overlay
+            .text-overlay.text-center
+              =image_tag(food.icon.url)
+              .text-center
+                %h4=food.name
+                -dish_foods = DishFood.where("food_id = ?", food.id).map{|d| d.dish_id}
+                -dishes_no_food = Dish.joins(:restaurant).near([@hood.latitude, @hood.longitude], 0.75)
+                -@dishes = dishes_no_food.select{|dish| dish_foods.include?(dish.id)}
+                %p=@dishes.count
