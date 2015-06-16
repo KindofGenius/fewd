@@ -7,7 +7,6 @@
         =image_tag("unhungr_logo.png", style: "width:130px;")
       .clearfix
     %ul
-
       %li
         =link_to "ABOUT", pages_about_path
       %li
@@ -22,3 +21,8 @@
       -else
         %li
           =link_to "LOG OUT", destroy_user_session_path, :method=>'delete'
+        -if current_user.admin == true
+          %li
+            =link_to "ALL DISHES", dishes_path
+          %li
+            =link_to "ALL RESTAURANTS", restaurants_path
