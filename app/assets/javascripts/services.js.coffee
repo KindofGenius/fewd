@@ -4,6 +4,7 @@
 
 
 $(document).on 'ready page:load', ->
+  mixpanel.track("Page Load")
 
   $('.mix-click').click ->
     sorter = $(this).data("sorter")

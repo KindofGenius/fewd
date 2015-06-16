@@ -1,16 +1,18 @@
-%h2 Sign in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    %div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %div= f.submit "Sign in"
-= render "devise/shared/links"
+.row
+  .col-sm-offset-2
+    .outline-box
+      %h2 Sign in
+      = form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :multipart => true, :class => "form-horizontal" }) do |f|
+        .form-group
+          = f.label :email, class: "col-sm-2 control-label"
+          .col-sm-10= f.email_field :email, autofocus: true, class: "form-control"
+        .form-group
+          = f.label :password, class: "col-sm-2 control-label"
+          .col-sm-10= f.password_field :password, autocomplete: "off", class: "form-control"
+        - if devise_mapping.rememberable?
+          .form-group
+            = f.label :remember_me, class: "form-control", class: "col-sm-2 control-label"
+            .col-sm-10= f.check_box :remember_me
+        .form-group
+          .col-sm-12= f.submit "Sign in", class: "btn btn-success", style: "width:100%;"
+      = render "devise/shared/links"
