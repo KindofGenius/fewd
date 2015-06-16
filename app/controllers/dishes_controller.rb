@@ -17,7 +17,7 @@ class DishesController < ApplicationController
     @restaurant = Restaurant.find(@dish.restaurant_id)
     @full_width = true
     @services = @restaurant.services
-    @others = @restaurant.dishes.published.where.not(id: @dish.id)
+    @others = @restaurant.dishes.where("publish = ? AND id != ?", true, @dish.id)
     @title = "#{@dish.name} from #{@restaurant.name}"
     @image = "#{@dish.dish_images.first.avatar.url}"
   end
