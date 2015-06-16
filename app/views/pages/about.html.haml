@@ -1,12 +1,2 @@
 %h1 Pages#about
-.row.row-centered{style:"background: rgb(231, 231, 231);padding-top:20px;"}
-  .col-xs-12.col-centered
-    .form-group.text-center
-      = form_tag(pages_search_path, :method => "get", class: "", id: "search-form") do
-        .col-xs-12.col-sm-8{style:"margin-bottom:10px;"}
-          = text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter Your Delivery Address (i.e. 123 Main Street, Newark, DE)"
-        .col-xs-12.col-sm-2{style: "padding-left:0px;"}
-          %button.btn.btn-info{:type => "submit"}
-            %i.icon-search
-            Find Food in My Area
-        .clearfix
+%p Write about us here

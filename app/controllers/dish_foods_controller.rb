@@ -1,5 +1,7 @@
 class DishFoodsController < ApplicationController
   before_action :set_dish_food, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_filter :admin
 
   # GET /dish_foods
   # GET /dish_foods.json
@@ -70,5 +72,9 @@ class DishFoodsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_food_params
       params.require(:dish_food).permit(:dish_id, :food_id)
+    end
+
+    def admin
+      redirect_to root_path unless current_user.admin == true
     end
 end

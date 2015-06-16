@@ -1,5 +1,7 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:show]
+  before_filter :admin, except: [:show]
 
   # GET /dishes
   # GET /dishes.json
@@ -82,5 +84,9 @@ class DishesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_params
       params.require(:dish).permit(:restaurant_id, :name, :publish, :tag_list, mood_ids: [], diet_ids: [], food_ids: [], dish_images_attributes: [:id, :dish_id, :avatar, :_destroy])
+    end
+
+    def admin
+      redirect_to root_path unless current_user.admin == true
     end
 end

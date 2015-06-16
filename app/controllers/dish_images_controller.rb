@@ -1,5 +1,7 @@
 class DishImagesController < ApplicationController
   before_action :set_dish_image, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_filter :admin
 
   # GET /dish_images
   # GET /dish_images.json
@@ -70,5 +72,9 @@ class DishImagesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_image_params
       params.require(:dish_image).permit(:dish_id, :avatar)
+    end
+    
+    def admin
+      redirect_to root_path unless current_user.admin == true
     end
 end

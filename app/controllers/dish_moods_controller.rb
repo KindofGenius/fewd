@@ -1,6 +1,7 @@
 class DishMoodsController < ApplicationController
   before_action :set_dish_mood, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
+  before_filter :admin
   # GET /dish_moods
   # GET /dish_moods.json
   def index
@@ -70,5 +71,9 @@ class DishMoodsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_mood_params
       params.require(:dish_mood).permit(:dish_id, :mood_id)
+    end
+
+    def admin
+      redirect_to root_path unless current_user.admin == true
     end
 end

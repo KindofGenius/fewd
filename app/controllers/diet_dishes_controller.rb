@@ -1,4 +1,6 @@
 class DietDishesController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :admin
   before_action :set_diet_dish, only: [:show, :edit, :update, :destroy]
 
   # GET /diet_dishes
@@ -70,5 +72,9 @@ class DietDishesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def diet_dish_params
       params.require(:diet_dish).permit(:dish_id, :diet_id)
+    end
+
+    def admin
+      redirect_to root_path unless current_user.admin == true
     end
 end

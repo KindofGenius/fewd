@@ -1,6 +1,7 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
+  before_filter :admin
   # GET /foods
   # GET /foods.json
   def index
@@ -76,5 +77,9 @@ class FoodsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_params
       params.require(:food).permit(:name, :description, :background, :icon)
+    end
+
+    def admin
+      redirect_to root_path unless current_user.admin == true
     end
 end

@@ -1,5 +1,7 @@
 class MoodsController < ApplicationController
   before_action :set_mood, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:show]
+  before_filter :admin, except: [:show]
 
   # GET /moods
   # GET /moods.json
@@ -75,5 +77,9 @@ class MoodsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def mood_params
       params.require(:mood).permit(:name, :icon, :background, :description)
+    end
+
+    def admin
+      redirect_to root_path unless current_user.admin == true
     end
 end

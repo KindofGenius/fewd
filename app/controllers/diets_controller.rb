@@ -1,5 +1,7 @@
 class DietsController < ApplicationController
   before_action :set_diet, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_filter :admin
 
   # GET /diets
   # GET /diets.json
@@ -76,5 +78,9 @@ class DietsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def diet_params
       params.require(:diet).permit(:name, :description, :background, :icon)
+    end
+    
+    def admin
+      redirect_to root_path unless current_user.admin == true
     end
 end

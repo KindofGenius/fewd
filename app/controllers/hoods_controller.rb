@@ -1,6 +1,7 @@
 class HoodsController < ApplicationController
   before_action :set_hood, only: [:show, :edit, :update, :destroy, :mood, :foods, :food, :moods, :diets, :diet]
-
+  before_filter :authenticate_user!, except: [:show, :moods, :mood, :diet, :diets, :food, :foods, :search, :exact]
+  before_filter :admin, except: [:show, :moods, :mood, :diet, :diets, :food, :foods, :search, :exact]
   # GET /hoods
   # GET /hoods.json
   def index
@@ -147,5 +148,9 @@ class HoodsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def hood_params
       params.require(:hood).permit(:address, :city, :state, :country, :longitude, :latitude, :avatar, :name)
+    end
+    
+    def admin
+      redirect_to root_path unless current_user.admin == true
     end
 end
