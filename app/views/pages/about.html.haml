@@ -1,2 +1,20 @@
-%h1 Pages#about
-%p Write about us here
+.about-center.text-center{style: "margin:100px auto;width:80%;"}
+  %h1 Find local food delivery visually by searching by your mood, cravings, and dietary needs. Why buy food you haven't seen first?
+  
+.about-pink.text-center{style: "margin:50px auto;padding:50px 30px;background:#ff0074;color:black;"}
+  %h3 Contact Us
+  %p
+    = mail_to "info@unhungr.com" do
+      .btn.btn-info{style:"color:black;"} info@unhungr.com
+
+.about-center.text-center{style: "margin:100px auto;width:80%;"}
+  %h1 The Team
+  .row
+    .col-sm-12.col-md-6
+      =image_tag("nir.jpg", class: "img-circle")
+      %h3 Nir Shemesh
+      Co-Founder
+    .col-sm-12.col-md-6
+      =image_tag("ben.jpg", class: "img-circle", style:"max-width:137px;")
+      %h3 Ben Gruber
+      Co-Founder

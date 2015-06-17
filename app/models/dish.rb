@@ -10,7 +10,7 @@ class Dish < ActiveRecord::Base
 
   accepts_nested_attributes_for :dish_images
   
-  scope :published, where(publish: true)
+  scope :published, -> { where(publish: true) }
 
   reverse_geocoded_by "restaurants.latitude", "restaurants.longitude"
   

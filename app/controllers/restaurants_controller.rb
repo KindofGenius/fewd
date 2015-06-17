@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1.json
   def show
     @full_width = true
-    @dishes = @restaurant.dishes.where("publish = ?", true)
+    @dishes = @restaurant.dishes.published
     @services = @restaurant.services
     @title = "#{@restaurant.name} Dishes"
     @image = "#{@dishes.first.dish_images.first.avatar.url}"

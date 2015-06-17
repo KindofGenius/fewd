@@ -18,5 +18,4 @@
 //= require wice_grid
 //= require local_time
 //= require jquery.sidr.min
-//= require turbolinks
 //= require_tree .

@@ -14,8 +14,8 @@
     =render "layouts/pink_chat"
     =render "layouts/facebook_og"
     =render "layouts/twitter_card"
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     .header
@@ -30,9 +30,8 @@
           = yield
     #footer{style:"height:200px;"}
       :javascript
-        $(document).on("page:change", function(){
-          $('#simple-menu').sidr();
-        });
+        $('#simple-menu').sidr();
+        
         
           
       =#render "layouts/footer"
