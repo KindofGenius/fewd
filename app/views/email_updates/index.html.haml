@@ -1,0 +1,21 @@
+%h1 Listing email_updates
+
+%table
+  %thead
+    %tr
+      %th Email
+      %th
+      %th
+      %th
+
+  %tbody
+    - @email_updates.each do |email_update|
+      %tr
+        %td= email_update.email
+        %td= link_to 'Show', email_update
+        %td= link_to 'Edit', edit_email_update_path(email_update)
+        %td= link_to 'Destroy', email_update, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Email update', new_email_update_path

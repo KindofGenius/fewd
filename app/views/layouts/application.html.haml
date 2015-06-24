@@ -20,6 +20,7 @@
     = csrf_meta_tags
   %body
     .header
+      = render "layouts/email_collect"
       = render 'layouts/navigation'
     
     #main-container{ class:[ ("container content" unless @full_width), ("container full-width" if @full_width)]}

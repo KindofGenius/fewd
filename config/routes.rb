@@ -1,4 +1,6 @@
 Fewd::Application.routes.draw do
+  resources :email_updates
+
   resources :dish_foods
 
   resources :foods

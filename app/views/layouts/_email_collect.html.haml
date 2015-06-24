@@ -1,0 +1,12 @@
+.row.row-centered
+  .col-xs-12.col-centered
+    .email-collect
+      .form-group.text-center
+        = form_tag(email_updates_path, :method => "POST", class: "", id: "search-form") do
+          .col-xs-6.col-sm-4.col-centered{style:"margin-bottom:10px;"}
+            = text_field_tag :email, params[:email], class: "form-control", placeholder: "name@email.com",style: "font-size:10px;height: 30px;"
+          .col-xs-6.col-sm-3.col-centered{style: "padding-left:0px;"}
+            %button.btn.btn-info{:type => "submit", style: "font-size:10px;"}
+              %i.icon-search
+              Send Me Updates
+          .clearfix
